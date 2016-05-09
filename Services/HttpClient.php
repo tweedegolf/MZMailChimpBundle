@@ -60,6 +60,8 @@ class HttpClient
         }
         $curl = new Curl();
         $curl->setOption(CURLOPT_USERAGENT, 'MZMailChimpBundle');
+        $curl->setOption(CURLOPT_SSL_VERIFYPEER, TRUE);
+        $curl->setOption(CURLOPT_CAINFO, "/etc/php5/conf.d/cacert.pem");
         $browser = new Browser($curl);
         $response = $browser->post($url, array(), http_build_query($payload));
 
